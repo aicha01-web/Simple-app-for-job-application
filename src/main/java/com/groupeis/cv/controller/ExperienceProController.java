@@ -55,7 +55,7 @@ public class ExperienceProController {
     @PostMapping(value = "/experience/save")
     public String save(ExperienceProEntity experienceProEntity) {
         experienceProRepository.save(experienceProEntity);
-        return "redirect:/experience/getAll";
+        return "redirect:/cv/add";
     }
 
     @GetMapping(value = "/experience/getAll")

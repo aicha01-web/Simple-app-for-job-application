@@ -28,7 +28,6 @@ public class ExperienceProEntity {
 
     @Column(length = 200, nullable = false)
     private String title;
-
     @ManyToOne
     private CvEntity cv;
 }
