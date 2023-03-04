@@ -15,7 +15,6 @@
 	<description>Simple spring boot app for  job application</description>
 	<properties>
 		<java.version>17</java.version>
-		<tests.skip>true</tests.skip>
 		<docker.user/>
 		<docker.token/>
 	</properties>
@@ -87,6 +86,13 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
@@ -106,6 +112,14 @@
 							</publishRegistry>
 						</docker>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>17</source>
+					<target>17</target>
+
 				</configuration>
 			</plugin>
 		</plugins>
