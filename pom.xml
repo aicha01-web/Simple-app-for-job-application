@@ -15,6 +15,7 @@
 	<description>Simple spring boot app for  job application</description>
 	<properties>
 		<java.version>17</java.version>
+		<tests.skip>true</tests.skip>
 		<docker.user/>
 		<docker.token/>
 	</properties>

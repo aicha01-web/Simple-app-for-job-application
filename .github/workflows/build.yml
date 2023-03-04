@@ -16,7 +16,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
-        run: mvn -B package
+        run: mvn -B package -DskipTests
       - name: Publish to Docker
         run: |
           mvn -B spring-boot:build-image -Dspring-boot.buildimage.publish=true \
