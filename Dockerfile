@@ -1,5 +1,5 @@
 
 FROM openjdk:17
-ADD target/cv-0.0.1-SNAPSHOT.jar cv.jar
+ADD target/cv-*.jar cv.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "pointage.jar"]
+ENTRYPOINT ["java", "-jar", "cv.jar"]
