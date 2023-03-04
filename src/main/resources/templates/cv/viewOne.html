@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des CV</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{../login/tem/css/style.css}"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+</head>
+<body class="img js-fullheight" th:style="'background-image:url(' + @{../login/tem/images/bg.webp} + ');'">
+<div style='float: right;'>
+    <a th:href="@{/logout}" th:inline="text">
+        Déconnexion
+    </a>
+</div>
+<div style='float: left'>
+    <h5>Bienvenue sur la plateforme [[${#httpServletRequest.remoteUser}]] !
+        <a th:href="@{/editCv/{id}(id=${userId})}">Modifier votre cv</a>
+    </h5>
+</div>
+<section class="ftco-section">
+    <div class="cv-container">
+        <div class="row justify-content-center">
+
+            <div class="col-md-6 text-center-left mb-5">
+                <br>
+                <h2 class="h1-custom" style="color: #3B792E;">[[${#httpServletRequest.remoteUser}]]</h2>
+                <div class="heading-section" th:each="c:${cv}">
+                    <!--            <p th:text="${c.firstname}"></p>-->
+                    <!--            <p th:text="${c.lastname}"></p>-->
+                    <h2 class="h1-custom" th:text="${c.email}"></h2>
+                    <h2 class="h1-custom" th:text="${c.telephone} "></h2>
+                    <h2 class="h1-custom" th:text="${c.specialite} "></h2>
+                    <h2 class="h1-custom" th:text="${c.niveauEetude} "></h2>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="cv-container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center-left mb-5">
+                    <h2 style="color: green;">Expériences <span class="text-blue">professionelles</span></h2>
+                    <h4 class="p-custom" th:each="e:${exp}">
+                        De <strong th:text="${e.startAt}"> </strong> à <strong
+                            th:text="${e.endAt}"></strong>
+                        <br>
+<!--                                                th:text="${e.title}" <em>th:text="${e.enterprise}"</em>-->
+                        <strong class="experience-list" th:text="${e.title}"> </strong>  Pour le compte de
+                        <strong class="experience-list" th:text="${e.enterprise}"></strong>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--        <div class="row justify-content-center">-->
+    <!--            <h2 class="heading-section">Expérience</h2>-->
+    <!--            <br>-->
+    <!--            <ul th:each="e:${exp}">-->
+    <!--                <li th:text="${e.title}"></li>-->
+    <!--                <li th:text="${e.enterprise}">Entreprise:</li>-->
+    <!--                <li th:text="${e.startAt}">Date de début:</li>-->
+    <!--                <li th:text="${e.endAt}">Date de fin:</li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+
+</section>
+<script th:src="@{../login/tem/js/jquery.min.js}"></script>
+<script th:src="@{../login/tem/js/popper.js}"></script>
+<script th:src="@{../login/tem/js/bootstrap.min.js}"></script>
+<script th:src="@{../login/tem/js/main.js}"></script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.groupeis.cv.controller;
 
+import com.groupeis.cv.entity.CvEntity;
 import com.groupeis.cv.entity.ExperienceProEntity;
 import com.groupeis.cv.repository.ExperienceProRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,15 +42,15 @@ public class ExperienceProController {
     }
 
     @PostMapping("/updateExperience/{id}")
-    public String updateUser(@PathVariable("id") int id, @Valid ExperienceProEntity experience,
+    public String updateUser(@PathVariable("id") int id, @Valid CvEntity cv, @Valid ExperienceProEntity experience,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             experience.setId(id);
             return "experience/edit";
         }
-
+        experience.setCv(cv);
         experienceProRepository.save(experience);
-        return "redirect:/experience/getAll";
+        return "redirect:/";
     }
 
     @PostMapping(value = "/experience/save")

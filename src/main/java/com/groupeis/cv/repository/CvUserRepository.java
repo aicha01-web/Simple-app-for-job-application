@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CvUserRepository extends JpaRepository<CvUserEntity,Integer> {
+    CvUserEntity findByName(String name);
 }
